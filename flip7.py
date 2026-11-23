@@ -36,3 +36,11 @@ class Player:
             self.cards.append(dealt_card)
         if len(self.cards)==7:
             self.score+=sum(self.cards)+15
+
+
+def NumericDeck(d,mods=False):
+    numericdata=np.vectorize(lambda x: x.isnumeric())
+    df=np.unique_counts(np.int_(d[numericdata(d)]))
+    if mods is True:
+        df[1][[2,4,6,8,10]]+=1
+    return df
